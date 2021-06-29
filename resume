@@ -94,8 +94,9 @@ limitation de JSX:
 React.memo ne vérifie que les modifications apportées aux props. Si votre composant de fonction enveloppé dans React.memo a un useState, useReducer ou useContext Hook dans son implémentation, il sera toujours restitué lorsque l'état ou le contexte change.
 useMemo recalculera la valeur mémoïsée seulement si une des entrées a changé. Cette optimisation permet d’éviter des calculs coûteux à chaque rendu.
 
--useCallback renverra une version mémoïsée de la fonction de rappel qui changera uniquement si une des entrées a changé. C’est utile pour passer des fonctions de rappel à des composants enfants optimisés qui se basent sur une égalité référentielle pour éviter des rendus superflus
 
+-useCallback renverra une version mémoïsée de la fonction de rappel qui changera uniquement si une des entrées a changé. C’est utile pour passer des fonctions de rappel à des composants enfants optimisés qui se basent sur une égalité référentielle pour éviter des rendus superflus
+-useContext: pour gerer les etat qui engendre plusieur modification sur plusieur composant
 
 -La communication avec la base de sonnées se fait  via des echange http avec le backend. l'envoi d'une requetese fait via fetch
 - on utilise state à la place de ref pour  la recuperation d'un input dans le cas ou :
@@ -105,3 +106,14 @@ useMemo recalculera la valeur mémoïsée seulement si une des entrées a chang�
 -Custum hook:
 Construire vos propres Hooks vous permet d’extraire la logique d’un composant sous forme de fonctions réutilisables.
 
+-------------------- classed-based component -------------------
+error boundaries not possible with functionnal components: dans le cas ou des erreur surviennent l appli ne crash pas masi affiche un msg joliment
+
+----------------Redux------------
+redux equivaut a peu pres à  useContext mais certaine difference sont visible:
+  - useContext                    -redux
+  - modification peu fréquente     -trop frequente     (en terme de performances)
+  - small app                      - app plus importante
+
+Avec redux les composant ne manipule jamais directement la data: la manipulation se fait à traver une fonction Reducer et une autre subscribtion
+pour l'utiliser: installer redux et react-redux
